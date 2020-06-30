@@ -1,0 +1,11 @@
+<div class="main-console-display">
+  <div ng-repeat="msg in msgList" class="main-console-entry">
+    <span class="main-console-msg-time">{{msg.timeString}}</span>
+    <span class="main-console-msg-text">
+      <span ng-repeat="part in msg.parts">
+        <span ng-if="part.linkinfo" ng-class="part.css" data-toggle="tooltip" title="{{part.linkinfo.description}}" ng-click="handleClick(part)">{{part.text}}</span>
+        <span ng-if="part.linkinfo == null" ng-class="part.css">{{part.text}}</span>
+      </span>
+    </span>
+  </div>
+</div>

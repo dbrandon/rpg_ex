@@ -1,0 +1,49 @@
+
+.main-console-display {
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 5px 10px;
+  padding: 2px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.main-console-entry {
+  display: flex;
+}
+
+.main-console-msg-time {
+  font-weight: bold;
+}
+
+.main-console-msg-text {
+  margin-left: 15px;
+}
+
+.combat-text-normal {
+  color: black;
+}
+.combat-text-red {
+  color: red;
+}
+.combat-text-blue {
+  color: blue;
+}
+
+.combat-text-italic {
+  font-style: italic;
+}
+
+.combat-text-link-green {
+  color: rgb(0, 209, 0);
+  cursor: default;
+}
+.combat-text-link-blue {
+  color: rgb(20, 20, 247);
+  cursor: default;
+}
+.combat-text-link-purple {
+  color: rgb(224, 0, 224);
+  cursor: default;
+}
