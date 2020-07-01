@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div ng-app="placeholderApp" ng-controller="mainController">
+    <div ng-app="rpgApp" ng-controller="mainController">
       <div>Label is {{label}}</div>
       <div><span>MOB Health: {{health}}</span></div>
-      <damage-console></damage-console>
+      <console console-name="combat"></console>
 
       <button type="button" class="btn btn-primary" ng-click="handleAttack('swing')">Swing</button>
       <button type="button" class="btn btn-primary" ng-click="spawnMob()">Spawn</button>
@@ -19,6 +19,12 @@
     <script src="node_modules/sprintf-js/dist/sprintf.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+
+
     <script src="main.js"></script>
+    <script src="console.js"></script>
+    <script src="consoleService.js"></script>
+    <script src="itemFactory.js"></script>
+    <script src="mobFactory.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <div class="main-console-display">
-  <div ng-repeat="msg in msgList" class="main-console-entry">
+  <div ng-repeat="msg in msgList.msgList" class="main-console-entry">
     <span class="main-console-msg-time">{{msg.timeString}}</span>
     <span class="main-console-msg-text">
       <span ng-repeat="part in msg.parts">
