@@ -10,10 +10,11 @@ rpgApp.directive('console', function () {
     controller: function ($scope, $element, ConsoleService, $interval) {
       $scope.mainDiv = $element.children()[0];
 
-      $scope.msgList = new ConsoleService.MessageList();
-      ConsoleService.registerConsole($scope.consoleName, function(msg) {
-        $scope.msgList.addMessage(ConsoleService.process(msg));
-      })
+      $scope.msgList = new ConsoleService.MessageList($scope.consoleName);
+      ConsoleService.registerConsole($scope.msgList);
+      // function(msg) {
+      //  $scope.msgList.addMessage(ConsoleService.process.apply(null, arguments));
+      //})
 
       $scope.msgList.addMessageListener(function() {
         $interval(function () {

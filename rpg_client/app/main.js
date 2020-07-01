@@ -2,17 +2,19 @@
 
 var rpgApp = angular.module('rpgApp', []);
 
-rpgApp.controller('mainController', function($scope, ItemFactory, ConsoleService) {
+rpgApp.controller('mainController', function($scope, ItemFactory, ConsoleService, RpgService) {
   $scope.mainConsole = document.getElementById('main-console');
 
   $scope.label = "my label";
   $scope.health = 25;
   $scope.weapon = ItemFactory.createRandomItem();
 
-  ConsoleService.combat('Starting RPG system...');
-  ConsoleService.combat([
-    ConsoleService.text('You start with'), $scope.weapon.toLogMessage()
-  ])
+  RpgService.onSystemLoaded().then(function() {
+    ConsoleService.combat('Starting RPG system...');
+    ConsoleService.combat([
+      ConsoleService.text('You start with'), $scope.weapon.toLogMessage()
+    ])
+  });
 
   $scope.handleAttack = function(which) {
     if($scope.health > 0) {

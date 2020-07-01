@@ -1,6 +1,6 @@
 'use strict';
 
-rpgApp.factory('ConsoleService', function () {
+rpgApp.factory('ConsoleService', function (RpgService) {
   var factory = {};
 
   function Message(parts) {
@@ -13,7 +13,8 @@ rpgApp.factory('ConsoleService', function () {
 
   factory.Message = Message;
 
-  function MessageList() {
+  function MessageList(name) {
+    this.name = name;
     this.msgList = [];
     this.listeners = [];
   }
@@ -28,52 +29,7 @@ rpgApp.factory('ConsoleService', function () {
     });
   }
 
-  MessageList.prototype.addMessageListener = function (callback) {
-    this.listeners.push(callback);
-  }
-
-  factory.MessageList = MessageList;
-
-  factory.TEXT_NORMAL = 'combat-text-normal';
-  factory.TEXT_RED = 'combat-text-red';
-  factory.TEXT_BLUE = 'combat-text-blue';
-
-  factory.TEXT_ITALIC = 'combat-text-italic';
-
-  factory.TEXT_LINK_GREEN = 'combat-text-link-green';
-  factory.TEXT_LINK_BLUE = 'combat-text-link-blue';
-  factory.TEXT_LINK_PURPLE = 'combat-text-link-purple';
-
-  var associations = {};
-  var backlog = {};
-
-  factory.registerConsole = function(name, impl) {
-    associations[name] = impl;
-    if(backlog[name]) {
-      backlog[name].forEach(function(arg) {
-        impl(factory.process(arg));
-      });
-      delete backlog[name];
-    }
-  }
-
-  function logToConsole(name, arg) {
-    if(associations[name]) {
-      associations[name](factory.process(arg));
-    }
-    else {
-      if(backlog[name] == null) {
-        backlog[name] = []
-      }
-      backlog[name].push(arg);
-    }
-  }
-
-  factory.combat = function(arg) {
-    logToConsole('combat', factory.process.apply(null, arguments));
-  }
-
-  factory.process = function(arg) {
+  MessageList.prototype.processMessage = function(arg) {
     var msg;
 
     if (arguments.length == 1) {
@@ -96,7 +52,31 @@ rpgApp.factory('ConsoleService', function () {
       msg = new Message(msgParts);
     }
 
+    this.addMessage(msg);
     return msg;
+  }
+
+  MessageList.prototype.addMessageListener = function (callback) {
+    this.listeners.push(callback);
+  }
+
+  factory.MessageList = MessageList;
+
+  factory.TEXT_NORMAL = 'combat-text-normal';
+  factory.TEXT_RED = 'combat-text-red';
+  factory.TEXT_BLUE = 'combat-text-blue';
+
+  factory.TEXT_ITALIC = 'combat-text-italic';
+
+  factory.TEXT_LINK_GREEN = 'combat-text-link-green';
+  factory.TEXT_LINK_BLUE = 'combat-text-link-blue';
+  factory.TEXT_LINK_PURPLE = 'combat-text-link-purple';
+
+  factory.registerConsole = function(impl) {
+    factory[impl.name] = function() {
+      impl.processMessage.apply(impl, arguments);
+    }
+    RpgService.reportConsoleLoaded(impl.name);
   }
 
   factory.text = function (message, css) {
