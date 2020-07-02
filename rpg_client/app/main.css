@@ -1,12 +1,14 @@
 
 .main-console-display {
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   margin: 5px 10px;
   padding: 2px;
   max-height: 200px;
   overflow: auto;
+  background-color: black;
+  color: rgba(255, 255, 255, 0.849);
 }
 
 .main-console-entry {
@@ -22,17 +24,27 @@
 }
 
 .combat-text-normal {
-  color: black;
+  color: lightgray;
 }
 .combat-text-red {
   color: red;
 }
 .combat-text-blue {
-  color: blue;
+  color: rgb(60, 60, 255);
 }
 
 .combat-text-italic {
   font-style: italic;
+}
+
+.combat-text-link-gray {
+  color: gray;
+  cursor: default;
+}
+
+.combat-text-link-white {
+  color: white;
+  cursor: default;
 }
 
 .combat-text-link-green {
@@ -40,7 +52,7 @@
   cursor: default;
 }
 .combat-text-link-blue {
-  color: rgb(20, 20, 247);
+  color: #6f6fff;
   cursor: default;
 }
 .combat-text-link-purple {

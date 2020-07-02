@@ -7,8 +7,7 @@
   </head>
   <body>
     <div ng-app="rpgApp" ng-controller="mainController">
-      <div>Label is {{label}}</div>
-      <div><span>MOB Health: {{health}}</span></div>
+      <div><span>{{mob.name}} Health: {{mob.health}}</span></div>
       <console console-name="combat"></console>
 
       <button type="button" class="btn btn-primary" ng-click="handleAttack('swing')">Swing</button>

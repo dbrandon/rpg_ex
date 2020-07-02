@@ -68,6 +68,8 @@ rpgApp.factory('ConsoleService', function (RpgService) {
 
   factory.TEXT_ITALIC = 'combat-text-italic';
 
+  factory.TEXT_LINK_GRAY = 'combat-text-link-gray';
+  factory.TEXT_LINK_WHITE = 'combat-text-link-white';
   factory.TEXT_LINK_GREEN = 'combat-text-link-green';
   factory.TEXT_LINK_BLUE = 'combat-text-link-blue';
   factory.TEXT_LINK_PURPLE = 'combat-text-link-purple';
