@@ -49,7 +49,7 @@
     "protractor": "5.1.2",
     "protractor-cucumber-framework": "4.0.3",
     "serve-index": "1.9.0",
-    "serve-static": "1.12.4",
+    "serve-static": "1.16.0",
     "time-grunt": "1.4.0",
     "typescript": "2.5.2"
   },
